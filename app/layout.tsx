@@ -1,19 +1,14 @@
-import { Sidebar } from '@/components/Sidebar';
-
 import './globals.css';
-
 import { Analytics } from '@vercel/analytics/react';
-
 import { Figtree } from 'next/font/google';
-
-import { SupabaseProvider } from '@/providers/SupabaseProvider';
-import { UserProvider } from '@/providers/UserProvider';
-import { ModalProvider } from '@/providers/ModalProvider';
-import { ToasterProvider } from '@/providers/ToasterProvider';
-
-import { getLikedSongs } from '@/actions/getLikedSongs';
-import { Player } from '@/components/Player';
-import { getActiveProductsWithPrices } from '@/actions/getActiveProductsWithPrices';
+import {getLikedSongs} from "../actions/getLikedSongs";
+import {getActiveProductsWithPrices} from "../actions/getActiveProductsWithPrices";
+import {ToasterProvider} from "../providers/ToasterProvider";
+import {SupabaseProvider} from "../providers/SupabaseProvider";
+import {UserProvider} from "../providers/UserProvider";
+import {ModalProvider} from "../providers/ModalProvider";
+import { Sidebar } from '../components/Sidebar';
+import {Player} from "../components/Player";
 
 const font = Figtree({ subsets: ['latin'] });
 

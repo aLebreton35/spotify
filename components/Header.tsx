@@ -1,24 +1,18 @@
 'use client';
 
 import { Button } from './Button';
-
-import { usePlayer } from '@/hooks/usePlayer';
-import { useUser } from '@/hooks/useUser';
-import { useAuthModal } from '@/hooks/useAuthModal';
-
 import { useSupabaseClient } from '@supabase/auth-helpers-react';
-
 import { FaUserAlt } from 'react-icons/fa';
 import { RxCaretLeft } from 'react-icons/rx';
 import { RxCaretRight } from 'react-icons/rx';
 import { HiHome } from 'react-icons/hi';
 import { BiSearch } from 'react-icons/bi';
-
 import { useRouter } from 'next/navigation';
-
 import { twMerge } from 'tailwind-merge';
-
 import { toast } from 'react-hot-toast';
+import {useAuthModal} from "../hooks/useAuthModal";
+import {useUser} from "../hooks/useUser";
+import {usePlayer} from "../hooks/usePlayer";
 
 //* Define the props interface for the Header component.
 interface HeaderProps {

@@ -1,19 +1,14 @@
 'use client';
 
 import { useState } from 'react';
-
 import { toast } from 'react-hot-toast';
-
-import { postData } from '@/libs/helpers';
-import { getStripe } from '@/libs/stripeClient';
-
-import { useUser } from '@/hooks/useUser';
-
-import { Price, ProductWithPrice } from '@/types';
-
 import { Modal } from './Modal';
 import { Button } from './Button';
-import { useSubscribeModal } from '@/hooks/useSubscribeModal';
+import {Price, ProductWithPrice} from "../types/types";
+import {useSubscribeModal} from "../hooks/useSubscribeModal";
+import {useUser} from "../hooks/useUser";
+import { postData } from '../libs/helpers';
+import { getStripe } from '../libs/stripeClient';
 
 interface subscribeModalProps {
   products: ProductWithPrice[];

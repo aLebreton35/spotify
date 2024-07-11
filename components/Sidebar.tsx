@@ -1,20 +1,15 @@
 'use client';
 
 import { twMerge } from 'tailwind-merge';
-
 import { usePathname } from 'next/navigation';
-
-import { usePlayer } from '@/hooks/usePlayer';
-
 import { useMemo } from 'react';
 import { HiHome } from 'react-icons/hi';
 import { BiSearch } from 'react-icons/bi';
-
 import { Box } from './Box';
 import { SidebarItem } from './SidebarItem';
 import { Library } from './Library';
-
-import { Song } from '@/types';
+import {Song} from "../types/types";
+import {usePlayer} from "../hooks/usePlayer";
 
 //* Declaring the type for the Sidebar component's properties
 interface SidebarProps {

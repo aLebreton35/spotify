@@ -1,15 +1,13 @@
 'use client';
 
 import { useEffect } from 'react';
-
 import { useSessionContext, useSupabaseClient } from '@supabase/auth-helpers-react';
 import { Auth } from '@supabase/auth-ui-react';
 import { ThemeSupa } from '@supabase/auth-ui-shared';
-
 import { Modal } from './Modal';
 import { useRouter } from 'next/navigation';
+import {useAuthModal} from "../hooks/useAuthModal";
 
-import { useAuthModal } from '@/hooks/useAuthModal';
 
 export const AuthModal = () => {
   //* Initializes Supabase client, Next.js router and session context.

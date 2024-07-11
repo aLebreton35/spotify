@@ -1,17 +1,12 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-
 import { toast } from 'react-hot-toast';
-
 import { useRouter } from 'next/navigation';
-
-import { Button } from '@/components/Button';
-
-import { useSubscribeModal } from '@/hooks/useSubscribeModal';
-import { useUser } from '@/hooks/useUser';
-
-import { postData } from '@/libs/helpers';
+import {useSubscribeModal} from "../../../hooks/useSubscribeModal";
+import {useUser} from "../../../hooks/useUser";
+import {postData} from "../../../libs/helpers";
+import {Button} from "../../../components/Button";
 
 export const AccountContent = () => {
   const router = useRouter();

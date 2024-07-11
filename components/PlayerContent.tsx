@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { usePlayer } from '@/hooks/usePlayer';
-import { useAudio } from '@/hooks/useAudio';
 import { FaPlay, FaPause, FaStepForward, FaStepBackward, FaRandom, FaSync, FaDownload } from 'react-icons/fa';
-import { Song } from "@/types";
 import { Slider } from './Slider';
 import { HiSpeakerWave, HiSpeakerXMark } from "react-icons/hi2";
-import { useLoadImage } from "@/hooks/useLoadImage";
 import {toast} from "react-hot-toast";
+import Image from 'next/image';
+import {Song} from "../types/types";
+import {useAudio} from "../hooks/useAudio";
+import {usePlayer} from "../hooks/usePlayer";
+import { useLoadImage } from '../hooks/useLoadImage';
 
 interface PlayerContentProps {
     song: Song;
@@ -27,10 +28,10 @@ export const PlayerContent: React.FC<PlayerContentProps> = ({ song, songUrl }) =
         }
     };
 
-    const handleProgressBarClick = (e: { target: { getBoundingClientRect: () => any; }; clientX: number; }) => {
+    const handleProgressBarClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
         if (!duration || isNaN(duration)) return; // Ensure duration is a valid number before using it
 
-        const rect = e.target.getBoundingClientRect();
+        const rect = e.currentTarget.getBoundingClientRect();
         const x = e.clientX - rect.left; // x position within the element.
         const newTime = (x / rect.width) * duration;
         if (audioRef.current && !isNaN(newTime)) {
@@ -140,7 +141,7 @@ export const PlayerContent: React.FC<PlayerContentProps> = ({ song, songUrl }) =
             <audio ref={audioRef} preload="auto" />
 
             <div className="flex items-center space-x-4">
-                <img src={songImage || '/images/apple-touch-icon.png'} alt={song.title} className="w-12 h-12 object-cover" />
+                <Image src={songImage || '/images/apple-touch-icon.png'} alt={song.title} className="w-12 h-12 object-cover" />
                 <div className="flex flex-col">
                     <span className="font-bold">{song.title}</span>
                     <span className="text-xs text-gray-400">{song.author}</span>
@@ -167,8 +168,11 @@ export const PlayerContent: React.FC<PlayerContentProps> = ({ song, songUrl }) =
                 </div>
                 <div className="flex items-center w-full">
                     <span className="text-xs text-gray-400">{formatTime(progress)}</span>
-                    <div onClick={handleProgressBarClick} style={{ cursor: 'pointer' }} className="relative h-1 bg-gray-600 flex-grow mx-2">
-                        <div style={{ width: `${(progress / duration) * 100}%` }} className="absolute h-full bg-white"></div>
+                    <div onClick={handleProgressBarClick}
+                         style={{cursor: 'pointer'}}
+                         className="relative h-1 bg-gray-600 flex-grow mx-2">
+                        <div style={{width: `${(progress / duration) * 100}%`}}
+                             className="absolute h-full bg-white"></div>
                     </div>
                     <span className="text-xs text-gray-400">{formatTime(duration)}</span>
                 </div>

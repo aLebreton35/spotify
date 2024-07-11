@@ -2,7 +2,6 @@
 
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
-
 import { FaPlay } from 'react-icons/fa';
 
 //* Define ListItemProps interface
