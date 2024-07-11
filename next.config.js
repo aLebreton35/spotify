@@ -2,6 +2,7 @@
 const nextConfig = {
   basePath: '/spotify', // TODO : que en PROD je pense
   assetPrefix: '/spotify/',
+  trailingSlash: true, // Ensure trailing slashes for GitHub Pages compatibility
   async headers() {
     return [
       {
