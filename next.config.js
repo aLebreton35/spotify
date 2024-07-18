@@ -12,8 +12,8 @@ if (isGithubActions) {
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   assetPrefix: assetPrefix || '/spotify/',
-  basePath: basePath || '/spotify', // TODO : que en PROD je pense
-  trailingSlash: true, // Ensure trailing slashes for GitHub Pages compatibility
+  basePath: basePath || '/spotify',
+  trailingSlash: true,
   async headers() {
     return [
       {
