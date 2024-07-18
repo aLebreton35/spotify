@@ -1,7 +1,18 @@
+const isGithubActions = process.env.GITHUB_ACTIONS || false;
+
+let assetPrefix = '';
+let basePath = '';
+
+if (isGithubActions) {
+  const repo = process.env.GITHUB_REPOSITORY.replace(/.*?\//, '');
+  assetPrefix = `/${repo}/`;
+  basePath = `/${repo}`;
+}
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  basePath: '/spotify', // TODO : que en PROD je pense
-  assetPrefix: '/spotify/',
+  assetPrefix: assetPrefix || '/spotify/',
+  basePath: basePath || '/spotify', // TODO : que en PROD je pense
   trailingSlash: true, // Ensure trailing slashes for GitHub Pages compatibility
   async headers() {
     return [
@@ -16,11 +27,12 @@ const nextConfig = {
       },
     ];
   },
-
   reactStrictMode: true,
   images: {
     domains: ["zhcpytnhrbxpmfbakgzx.supabase.co"],
+    unoptimized: true,
   },
+  output: 'export',
 };
 
 module.exports = nextConfig;
